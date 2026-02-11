@@ -122,3 +122,4 @@ VITE_API_URL=http://localhost:8000
 - Advanced candidate scoring with AI
 - Interview scheduling
 - Document management
+# CapstoneITCI
