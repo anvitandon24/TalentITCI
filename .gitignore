@@ -1,0 +1,15 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+.env
+
+# Mac
+.DS_Store
+
+# Node
+node_modules/
+dist/
+
+# ChromaDB vector store (generated, not source code)
+chroma_db/

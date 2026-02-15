@@ -1,0 +1,31 @@
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+python-multipart==0.0.12
+sqlalchemy==2.0.36
+psycopg2-binary==2.9.10
+python-dotenv==1.0.1
+alembic==1.14.1
+# Authentication dependencies
+bcrypt==4.2.1
+python-jose[cryptography]==3.3.0
+google-auth==2.36.0
+email-validator==2.2.0
+requests==2.32.5
+# RAG dependencies
+openai
+PyMuPDF
+tiktoken
+faiss-cpu
+numpy
+langchain-openai
+langchain-chroma
+chromadb
+langchain==0.3.3
+langchain-community==0.3.2
+langchain-core==0.3.10
+langchain-openai==0.2.2
+langchain-google-genai==2.0.1
+langchain-chroma==0.1.4
+langgraph==0.2.39
+chromadb==0.5.15
+python-dotenv
