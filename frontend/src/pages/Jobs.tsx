@@ -45,6 +45,9 @@ export const Jobs = () => {
     const [loadingRankings, setLoadingRankings] = useState(false);
     const [triggeringAll, setTriggeringAll] = useState(false);
 
+    // Applied job IDs for candidate (so we show "Applied" instead of "Apply Now")
+    const [appliedJobIds, setAppliedJobIds] = useState<Set<number>>(new Set());
+
     // Delete confirmation state
     const [deleteConfirmJobId, setDeleteConfirmJobId] = useState<number | null>(null);
     const [deleting, setDeleting] = useState(false);
@@ -52,6 +55,28 @@ export const Jobs = () => {
     useEffect(() => {
         loadJobs();
     }, []);
+
+    const loadAppliedJobIds = async () => {
+        if (user?.role !== 'candidate') return;
+        const cid = user?.candidate_id ?? (user?.id ? parseInt(String(user.id)) : null);
+        if (!cid) return;
+        try {
+            const res = await endpoints.getCandidateApplications(cid);
+            setAppliedJobIds(new Set((res.data || []).map((a: { job_id: number }) => a.job_id)));
+        } catch (e) {
+            console.error('Failed to load applications', e);
+        }
+    };
+
+    useEffect(() => {
+        loadAppliedJobIds();
+    }, [user?.role, user?.candidate_id, user?.id]);
+
+    useEffect(() => {
+        const onFocus = () => loadAppliedJobIds();
+        window.addEventListener('focus', onFocus);
+        return () => window.removeEventListener('focus', onFocus);
+    }, [user?.role, user?.candidate_id, user?.id]);
 
     const loadJobs = async () => {
         try {
@@ -345,12 +370,18 @@ export const Jobs = () => {
                                                 </div>
                                             </>
                                         ) : (
-                                            <Button
-                                                className="w-full"
-                                                onClick={() => navigate(`/apply/${job.id}`)}
-                                            >
-                                                Apply Now
-                                            </Button>
+                                            appliedJobIds.has(job.id) ? (
+                                                <Button className="w-full" disabled>
+                                                    Applied
+                                                </Button>
+                                            ) : (
+                                                <Button
+                                                    className="w-full"
+                                                    onClick={() => navigate(`/apply/${job.id}`)}
+                                                >
+                                                    Apply Now
+                                                </Button>
+                                            )
                                         )}
                                     </div>
 

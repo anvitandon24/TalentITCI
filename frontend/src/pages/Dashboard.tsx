@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { Users, Briefcase, Calendar, TrendingUp, BrainCircuit } from 'lucide-react';
 import { Card } from '../components/Card';
 import { PageTransition } from '../components/PageTransition';
@@ -22,6 +23,7 @@ const item = {
 };
 
 export const Dashboard = () => {
+    const navigate = useNavigate();
     const [candidates, setCandidates] = useState<Candidate[]>([]);
     const [jobs, setJobs] = useState<Job[]>([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -108,7 +110,10 @@ export const Dashboard = () => {
                         <p className="text-slate-500 dark:text-slate-400 mt-1">Here's what's happening today.</p>
                     </div>
 
-                    <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors shadow-lg shadow-blue-500/20">
+                    <button
+                        onClick={() => navigate('/jobs')}
+                        className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors shadow-lg shadow-blue-500/20"
+                    >
                         Post New Job
                     </button>
                 </div>

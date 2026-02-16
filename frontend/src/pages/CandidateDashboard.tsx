@@ -26,22 +26,30 @@ export const CandidateDashboard = () => {
 
     const candidateId = user?.candidate_id ?? parseInt(user?.id || '0');
 
+    const fetchData = async () => {
+        try {
+            const [appsRes, jobsRes] = await Promise.all([
+                endpoints.getCandidateApplications(candidateId),
+                endpoints.getJobs(),
+            ]);
+            setApplications(appsRes.data);
+            setJobs(jobsRes.data);
+        } catch (error) {
+            console.error('Failed to load dashboard data:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const [appsRes, jobsRes] = await Promise.all([
-                    endpoints.getCandidateApplications(candidateId),
-                    endpoints.getJobs(),
-                ]);
-                setApplications(appsRes.data);
-                setJobs(jobsRes.data);
-            } catch (error) {
-                console.error('Failed to load dashboard data:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
         fetchData();
+    }, [candidateId]);
+
+    // Refetch when user returns to tab so HR status updates are visible
+    useEffect(() => {
+        const onFocus = () => { if (candidateId) fetchData(); };
+        window.addEventListener('focus', onFocus);
+        return () => window.removeEventListener('focus', onFocus);
     }, [candidateId]);
 
     const totalApps = applications.length;

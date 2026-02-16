@@ -140,8 +140,8 @@ export const LandingPage = () => {
                         <Button onClick={() => navigate('/login')} size="lg" className="h-12 px-8 text-base bg-white text-slate-900 hover:bg-slate-200">
                             Start Free Trial <ArrowRight className="ml-2 w-4 h-4" />
                         </Button>
-                        <Button onClick={() => navigate('/login')} variant="outline" size="lg" className="h-12 px-8 text-base border-slate-700 hover:bg-slate-800">
-                            Browse Open Roles
+                        <Button onClick={() => navigate('/jobs')} variant="outline" size="lg" className="h-12 px-8 text-base border-slate-700 hover:bg-slate-800">
+                            View Jobs
                         </Button>
                     </motion.div>
 

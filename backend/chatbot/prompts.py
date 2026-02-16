@@ -31,6 +31,7 @@ Guidelines:
 4. Maintain a professional tone.
 5. Do NOT make up facts about specific company policies if you don't know them.
 6. If there is conversation history, use it to understand the context of follow-up questions.
+7. On this platform, "RAG" always means Retrieval-Augmented Generation (AI that retrieves documents and uses them to answer questions or score candidates). Never use or explain RAG as red-amber-green or traffic-light; that is not what RAG means here.
 
 Answer:
 """
@@ -46,6 +47,7 @@ Guidelines:
 2. If it's irrelevant (politics, sports, entertainment), politely decline and guide them back to HR topics.
 3. If it is an HR question but you have no tools/context, ask them to rephrase or be more specific.
 4. If there is conversation history, use it to maintain a natural conversation flow.
+5. On this platform, "RAG" means Retrieval-Augmented Generation (AI document retrieval for recruitment). Never refer to RAG as red-amber-green or traffic-light.
 
 Answer:
 """

@@ -73,9 +73,9 @@ export const ApplyJob = () => {
             // Show confirmation
             setShowConfirmation(true);
 
-            // Redirect after 3 seconds
+            // Redirect to dashboard so they see their applications; Jobs page will show "Applied" on next visit
             setTimeout(() => {
-                navigate('/applications');
+                navigate('/candidate-dashboard');
             }, 3000);
         } catch (error: unknown) {
             console.error('Failed to submit application:', error);
@@ -121,7 +121,7 @@ export const ApplyJob = () => {
                     <p className="text-slate-400 mb-4">
                         Your application for <span className="text-white font-semibold">{job.title}</span> has been successfully submitted.
                     </p>
-                    <p className="text-sm text-slate-500">Redirecting to your applications...</p>
+                    <p className="text-sm text-slate-500">Redirecting to your dashboard...</p>
                 </Card>
             </PageTransition>
         );

@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Users, Briefcase, Settings, LogOut, FileText, Compass, Sparkles } from 'lucide-react';
+import { LayoutDashboard, Users, Briefcase, LogOut, FileText, Compass, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { clsx } from 'clsx';
 import { useAuth } from '../context/AuthContext';
@@ -76,10 +76,6 @@ export const Sidebar = () => {
             </nav>
 
             <div className="p-4 border-t border-slate-800/50 space-y-2">
-                <button className="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 w-full transition-colors">
-                    <Settings className="w-5 h-5" />
-                    <span className="font-medium">Settings</span>
-                </button>
                 <button
                     onClick={handleLogout}
                     className="flex items-center gap-3 px-4 py-3 rounded-xl text-red-400 hover:text-red-300 hover:bg-red-500/10 w-full transition-colors"
