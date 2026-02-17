@@ -2,11 +2,10 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Search, Filter, MoreHorizontal, Sparkles, BrainCircuit,
-    ChevronDown, ChevronUp, CheckCircle, XCircle, RefreshCw,
-    FileText, Download, Briefcase, Loader2,
+    ChevronUp, CheckCircle, XCircle, RefreshCw,
+    Download, Briefcase, Loader2,
 } from 'lucide-react';
 import { Card } from '../components/Card';
-import { Button } from '../components/Button';
 import { PageTransition } from '../components/PageTransition';
 import { endpoints, type Candidate, type CandidateApplication } from '../lib/api';
 
