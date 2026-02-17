@@ -1,0 +1,35 @@
+# TalentITCI - Render Blueprint
+# Deploy: Connect this repo to Render, then use "New > Blueprint"
+# Docs: https://render.com/docs/blueprint-spec
+
+databases:
+  - name: talentitci-db
+    databaseName: talent_ai
+    plan: free  # 90 days free, then ~$7/mo. Use Neon for free PostgreSQL long-term.
+
+services:
+  - type: web
+    name: talentitci-backend
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    preDeployCommand: python seed_data.py
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: talentitci-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: OPENROUTER_API_KEY
+        sync: false  # You'll add this in Render Dashboard
+      - key: OPENROUTER_API_KEY_CHAT
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false  # Add your frontend URL after Vercel deploy, e.g. https://talentitci.vercel.app
