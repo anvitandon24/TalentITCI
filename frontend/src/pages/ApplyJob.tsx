@@ -63,7 +63,7 @@ export const ApplyJob = () => {
         setSubmitting(true);
         try {
             // Submit application
-            const response = await endpoints.applyToJob(candidateId, parseInt(jobId));
+            await endpoints.applyToJob(candidateId, parseInt(jobId));
 
             // Upload resume if provided
             if (file) {

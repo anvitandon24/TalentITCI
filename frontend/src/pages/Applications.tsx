@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Briefcase, Clock, Search, Filter, FileText, ShieldCheck, Download } from 'lucide-react';
+import { Briefcase, Search, FileText, ShieldCheck, Download } from 'lucide-react';
 import { Card } from '../components/Card';
 import { PageTransition } from '../components/PageTransition';
 import { useEffect, useState } from 'react';
